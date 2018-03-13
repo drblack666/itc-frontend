@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
 </head>
-
 <body>
     <script>
     
@@ -45,10 +44,9 @@
     }
     console.log( filterFelmales(people) );
 
-
     function getQuadrant(x, y) {
         if (x == 0 || y == 0) {
-            if (x == 0 && y == 0){
+            if (x == 0 && y == 0) {
                 return 'The point lies in the origin';
             } else if (x == 0) {
                 return 'The point lies on the x-axis';
@@ -67,7 +65,6 @@
     }
     console.log( getQuadrant(1, 2), getQuadrant(-1, 2), getQuadrant(-2, -3), getQuadrant(4, -7), getQuadrant(0, 0) );
 
-
     function plusAll(...args) {
         return args.reduce(plus);
     }
@@ -84,7 +81,7 @@
     }
     console.log( filterFelmalesV2(people) );
 
-    function objectToQueryString(obj){
+    function objectToQueryString(obj) {
         let queryString = '';
             for (let prop in obj) {
                 queryString += `${prop}=${obj[prop]}&`;
@@ -94,9 +91,25 @@
     }
     console.log( objectToQueryString( { name1: 'John', name2: 'Федор' } ) );
 
-    
+    const person = {
+        address: {
+            street: "Кутузовский проспект"
+        }
+    }
+
+    function getIn(obj, path, def) {
+        let info = obj[path[0]];
+        for (let i = 1; i < path.length; i++) {
+            if (info && info[path[i]]) {
+                info = info[path[i]];
+            } else {
+                return def;
+            }
+        }
+        return info;
+    }
+    console.log( getIn(person, ['address', 'street'], 'Бомж') );
+
     </script>
-
 </body>
-
 </html>
