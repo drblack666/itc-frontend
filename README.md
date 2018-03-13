@@ -1,1 +1,1 @@
-# itc-frontend
+Repository for itc course's homework
