@@ -1,0 +1,115 @@
+<!Doctype HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <script>
+    
+    function plus(num0, num1) {
+        return num0 + num1;
+    }
+    console.log( plus(1, 2) );
+
+    function multiply(num0, num1) {
+        let sum = 0;
+        for (let i = 0; i < num1; i++) {
+            sum = plus(sum, num0);
+        }
+        return sum;
+    }
+    console.log( multiply( 3, 10 ) );
+
+    function mergeArrays(arr0, arr1) {
+        return arr0.concat(arr1);
+    }
+    console.log( mergeArrays( [1, 2, 3], [4, 5]) );
+
+    const people = [
+        { name: 'Vladimir', sex: 'male', favorMovie: 'Cremea' },
+        { name: 'Natalya', sex: 'female', favorMovie: 'Matilda' },
+        { name: 'Hillary', sex: 'female', favourMovie: 'The Purge' },
+        { name: 'Alex', sex: 'male', favorMovie: 'Dimon' },
+        { name: 'Merkel', sex: 'female', favorMovie: 'Er ist wieder da' }
+    ];
+
+    function filterFelmales(arrayOfPeople) {
+        const newArrayOfPeople = [];
+        for (let i = 0; i < arrayOfPeople.length; i++){
+            if (arrayOfPeople[i].sex == 'female') {
+                newArrayOfPeople.push(arrayOfPeople[i]);
+            }
+        }
+        return newArrayOfPeople;
+    }
+    console.log( filterFelmales(people) );
+
+    function getQuadrant(x, y) {
+        if (x == 0 || y == 0) {
+            if (x == 0 && y == 0) {
+                return 'The point lies in the origin';
+            } else if (x == 0) {
+                return 'The point lies on the x-axis';
+            } else {
+                return 'The point lies on the y-axis';
+            }
+        } else if (x > 0 && y > 0) {
+            return 'The point lies in the 1 quarter';
+        } else if (x > 0 && y < 0) {
+            return 'The point lies in the 4 quarter';
+        } else if (x < 0 && y > 0) {
+            return 'The point lies in the 2 quarter';
+        } else if (x < 0 && y < 0) {
+            return 'The point lies in the 3 quarter';
+        }
+    }
+    console.log( getQuadrant(1, 2), getQuadrant(-1, 2), getQuadrant(-2, -3), getQuadrant(4, -7), getQuadrant(0, 0) );
+
+    function plusAll(...args) {
+        return args.reduce(plus);
+    }
+    console.log( plusAll(2, 3, 5, 7, 3) );
+
+
+    function multiplyAll(...args) {
+        return args.reduce(multiply); 
+    }
+    console.log( multiplyAll(2, 3, 5, 7, 3) );
+
+    function filterFelmalesV2(arrayOfPeople) {
+        return arrayOfPeople.filter( person => person.sex == 'female');
+    }
+    console.log( filterFelmalesV2(people) );
+
+    function objectToQueryString(obj) {
+        let queryString = '';
+            for (let prop in obj) {
+                queryString += `${prop}=${obj[prop]}&`;
+            }
+        queryString = queryString.slice(0, -1);
+        return encodeURIComponent(queryString);
+    }
+    console.log( objectToQueryString( { name1: 'John', name2: 'Федор' } ) );
+
+    const person = {
+        address: {
+            street: "Кутузовский проспект"
+        }
+    }
+
+    function getIn(obj, path, def) {
+        let info = obj[path[0]];
+        for (let i = 1; i < path.length; i++) {
+            if (info && info[path[i]]) {
+                info = info[path[i]];
+            } else {
+                return def;
+            }
+        }
+        return info;
+    }
+    console.log( getIn(person, ['address', 'street'], 'Бомж') );
+
+    </script>
+</body>
+</html>
